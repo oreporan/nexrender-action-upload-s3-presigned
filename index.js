@@ -11,10 +11,10 @@ const run = async (job, settings, action, type) => {
     input,
     params: { url, contentType },
   } = action;
-  input = input ?? job.output;
-  if (!path.isAbsolute(input)) input = path.join(job.workpath, input);
+  let finalInput = input ?? job.output;
+  if (!path.isAbsolute(finalInput)) finalInput = path.join(job.workpath, finalInput);
 
-  await uploadToS3(url, input, contentType);
+  await uploadToS3(url, finalInput, contentType);
 };
 
 module.exports = run;
