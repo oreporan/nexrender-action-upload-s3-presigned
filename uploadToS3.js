@@ -12,7 +12,7 @@ const putToPresignedUrl = async (url, buffer, contentTypeArg) => {
       headers: { "Content-Type": contentType ?? contentTypeArg },
     });
   } catch (error) {
-    throw new Error("failed uploading to s3 Presigned URL");
+    throw error;
   }
 };
 
