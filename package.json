@@ -1,6 +1,6 @@
 {
   "name": "nexrender-action-upload-s3-presigned",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Caches and tests to see if a cached template with the same name exists, if so, sets the template.src to the cached file",
   "main": "index.js",
   "repository": {
