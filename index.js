@@ -14,7 +14,7 @@ const run = async (job, settings, action, type) => {
   let finalInput = input ?? job.output;
   if (!path.isAbsolute(finalInput)) finalInput = path.join(job.workpath, finalInput);
 
-  await uploadToS3(url, finalInput, contentType);
+  await uploadToS3(url, finalInput, contentType, settings.logger);
 };
 
 module.exports = run;
