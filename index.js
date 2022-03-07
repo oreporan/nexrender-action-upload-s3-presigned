@@ -8,11 +8,11 @@ const run = async (job, settings, action, type) => {
     );
   }
   const logger = settings;
+  const {
+    input,
+    params: { url, contentType },
+  } = action;
   try {
-    const {
-      input,
-      params: { url, contentType },
-    } = action;
     let finalInput = input ?? job.output;
     if (!path.isAbsolute(finalInput))
       finalInput = path.join(job.workpath, finalInput);
