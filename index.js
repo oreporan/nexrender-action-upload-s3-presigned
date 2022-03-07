@@ -7,20 +7,20 @@ const run = async (job, settings, action, type) => {
       `[nexrender-action-upload-s3-presigned] action can be only run in postrender mode, you provided: ${type}.`
     );
   }
+  const logger = settings;
   try {
     const {
       input,
       params: { url, contentType },
     } = action;
-    const logger = settings;
     let finalInput = input ?? job.output;
     if (!path.isAbsolute(finalInput))
       finalInput = path.join(job.workpath, finalInput);
-  
+
     logger.log(
       `[nexrender-action-upload-s3-presigned] uploading to presigned-url: ${url}`
     );
-  
+
     await uploadToS3(url, finalInput, contentType, logger);
   } catch (error) {
     logger.log(
