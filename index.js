@@ -11,10 +11,16 @@ const run = async (job, settings, action, type) => {
     input,
     params: { url, contentType },
   } = action;
+  const logger = settings;
   let finalInput = input ?? job.output;
-  if (!path.isAbsolute(finalInput)) finalInput = path.join(job.workpath, finalInput);
+  if (!path.isAbsolute(finalInput))
+    finalInput = path.join(job.workpath, finalInput);
 
-  await uploadToS3(url, finalInput, contentType, settings.logger);
+  logger.log(
+    `[nexrender-action-upload-s3-presigned] uploading to presigned-url: ${url}`
+  );
+
+  await uploadToS3(url, finalInput, contentType, logger);
 };
 
 module.exports = run;
