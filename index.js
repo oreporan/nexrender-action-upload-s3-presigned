@@ -7,7 +7,7 @@ const run = async (job, settings, action, type) => {
       `[nexrender-action-upload-s3-presigned] action can be only run in postrender mode, you provided: ${type}.`
     );
   }
-  const logger = settings;
+  const {logger} = settings;
   const {
     input,
     params: { url, contentType },
