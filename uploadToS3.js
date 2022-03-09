@@ -9,6 +9,8 @@ const putToPresignedUrl = async (url, buffer, contentTypeArg, logger) => {
       throw new Error(`invalid presigned url, missing content-type`);
     }
     await axios.put(url, buffer, {
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity,
       headers: { "Content-Type": contentType ?? contentTypeArg },
     });
   } catch (error) {
